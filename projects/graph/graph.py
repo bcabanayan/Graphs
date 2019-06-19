@@ -6,7 +6,12 @@ from util import Stack, Queue  # These may come in handy
 class Graph:
     """Represent a graph as a dictionary of vertices mapping labels to edges."""
     def __init__(self):
-        self.vertices = {}
+        self.vertices = {
+            "1": {"0"},
+            "0": {"3"},
+            "3": {"0", "2"},
+            "2": set()
+        }
     def add_vertex(self, vertex):
         """
         Add a vertex to the graph.
