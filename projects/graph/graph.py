@@ -23,11 +23,16 @@ class Graph:
         Print each vertex in breadth-first order
         beginning from starting_vertex.
         """
-        # queue = Queue()
-        # queue.enqueue([starting_vertex])
-        # ### FINISH!!! ###
-        # while queue.size > 0:
-        #     print(queue[0])
+        nodes = []
+        queue = Queue()
+        queue.enqueue(starting_vertex)
+        while queue.size() > 0:
+            current_node = queue.dequeue()
+            nodes.append(current_node)
+            for vertex in self.vertices[current_node]:
+                if vertex not in nodes:
+                    queue.enqueue(vertex)
+        return print(nodes)
     def dft(self, starting_vertex):
         """
         Print each vertex in depth-first order
@@ -68,7 +73,21 @@ class Graph:
         starting_vertex to destination_vertex in
         depth-first order.
         """
-        pass  # TODO
+        s = Stack()
+        s.push([starting_vertex])
+        visited = set()
+        while s.size() > 0:
+            path = s.pop()
+            v = path[-1]
+            if v not in visited:
+                if v == destination_vertex:
+                    return path
+                visited.add(v)
+                for next_vert in self.vertices[v]:
+                    new_path = list(path)
+                    new_path.append(next_vert)
+                    s.push(new_path)
+        return None
 
 
 
