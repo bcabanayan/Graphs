@@ -23,16 +23,16 @@ class Graph:
         Print each vertex in breadth-first order
         beginning from starting_vertex.
         """
-        nodes = []
+        all_vertices = []
         queue = Queue()
         queue.enqueue(starting_vertex)
         while queue.size() > 0:
-            current_node = queue.dequeue()
-            nodes.append(current_node)
-            for vertex in self.vertices[current_node]:
-                if vertex not in nodes:
-                    queue.enqueue(vertex)
-        return print(nodes)
+            current_vertex = queue.dequeue()
+            all_vertices.append(current_vertex)
+            for neighbor in self.vertices[current_vertex]:
+                if neighbor not in all_vertices:
+                    queue.enqueue(neighbor)
+        return print(all_vertices)
     def dft(self, starting_vertex):
         """
         Print each vertex in depth-first order
