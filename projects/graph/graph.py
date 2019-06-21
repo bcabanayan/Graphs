@@ -38,14 +38,28 @@ class Graph:
         Print each vertex in depth-first order
         beginning from starting_vertex.
         """
-        pass  # TODO
+        all_vertices = []
+        stack = Stack()
+        stack.push(starting_vertex)
+        while stack.size() > 0:
+            current_vertex = stack.pop()
+            if current_vertex in all_vertices:
+                continue
+            all_vertices.append(current_vertex)
+            for neighbor in self.vertices[current_vertex]:
+                stack.push(neighbor)
+        return all_vertices
     def dft_recursive(self, starting_vertex, path = []):
         """
         Print each vertex in depth-first order
         beginning from starting_vertex.
         This should be done using recursion.
         """
-        pass  # TODO
+        # path = [starting_vertex]
+        # for neighbor in self.vertices[starting_vertex]:
+        #     if neighbor not in path:
+        #         path = self.dft_recursive(neighbor, path)
+        # return path
     def bfs(self, starting_vertex, destination_vertex):
         """
         Return a list containing the shortest path from
