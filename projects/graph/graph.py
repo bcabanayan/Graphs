@@ -23,16 +23,18 @@ class Graph:
         Print each vertex in breadth-first order
         beginning from starting_vertex.
         """
-        queue = Queue()
-        queue.enqueue(starting_vertex)
-
+        # queue = Queue()
+        # queue.enqueue([starting_vertex])
+        # ### FINISH!!! ###
+        # while queue.size > 0:
+        #     print(queue[0])
     def dft(self, starting_vertex):
         """
         Print each vertex in depth-first order
         beginning from starting_vertex.
         """
         pass  # TODO
-    def dft_recursive(self, starting_vertex):
+    def dft_recursive(self, starting_vertex, path = []):
         """
         Print each vertex in depth-first order
         beginning from starting_vertex.
@@ -45,7 +47,21 @@ class Graph:
         starting_vertex to destination_vertex in
         breath-first order.
         """
-        pass  # TODO
+        q = Queue()
+        q.enqueue([starting_vertex])
+        visited = set()
+        while q.size() > 0:
+            path = q.dequeue()
+            v = path[-1]
+            if v not in visited:
+                if v == destination_vertex:
+                    return path
+                visited.add(v)
+                for next_vert in self.vertices[v]:
+                    new_path = list(path)
+                    new_path.append(next_vert)
+                    q.enqueue(new_path)
+        return None
     def dfs(self, starting_vertex, destination_vertex):
         """
         Return a list containing a path from
