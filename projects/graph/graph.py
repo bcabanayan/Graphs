@@ -49,16 +49,25 @@ class Graph:
             for neighbor in self.vertices[current_vertex]:
                 stack.push(neighbor)
         return all_vertices
-    def dft_recursive(self, starting_vertex, path = []):
+    def dft_recursive(self, starting_vertex, path = None):
         """
         Print each vertex in depth-first order
         beginning from starting_vertex.
         This should be done using recursion.
         """
-        path += [starting_vertex]
-        for neighbor in self.vertices[starting_vertex]:
-            if neighbor not in path:
-                path = self.dft_recursive(neighbor, path)
+        # MY SOLUTION!
+        # path += [starting_vertex]
+        # for neighbor in self.vertices[starting_vertex]:
+        #     if neighbor not in path:
+        #         path = self.dft_recursive(neighbor, path)
+        # return path
+        # IN CLASS SOLUTION!
+        if path == None:
+            path = set()
+        path.add(starting_vertex)
+        for vert in self.vertices[starting_vertex]:
+            if vert not in path:
+                path = self.dft_recursive(vert, path)
         return path
     def bfs(self, starting_vertex, destination_vertex):
         """
