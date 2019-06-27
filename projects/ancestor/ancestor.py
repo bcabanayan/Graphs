@@ -11,10 +11,12 @@ class Graph:
         """
         Add a directed edge to the graph.
         """
-        if v1 in self.vertices and v2 in self.vertices:
-            self.vertices[v1].add(v2)
+        # removed the condition below--children wouldn't be added, because they wouldn't be in self.vertices
+        # if v1 in self.vertices and v2 in self.vertices:
+        self.vertices[v1].add(v2)
 
-def earliest_ancestor(ancestors, starting_node):
+# graph terminology
+
 # looks like depth first search--would be traversing the graph to the farthest away ancestor
 # not technically distance, but does it relate more to the number of parents?
 # 1. start with input value
@@ -23,3 +25,17 @@ def earliest_ancestor(ancestors, starting_node):
 # 4. increment counts of parents
 # 5. return parent after finding the max number of parents?
 
+# build graph
+
+# building graph using the parent child pairs
+
+# traverse graph
+
+def earliest_ancestor(ancestors, starting_node):
+    graph = Graph()
+    for ancestor in ancestors:
+        graph.add_vertex(ancestor[0])
+        # add edges!!!
+    print(graph.vertices)
+
+earliest_ancestor([(1, 3), (2, 3), (3, 6), (5, 6), (5, 7), (4, 5), (4, 8), (8, 9), (11, 8), (10, 1)], 1)

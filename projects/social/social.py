@@ -4,11 +4,13 @@ class User:
     def __init__(self, name):
         self.name = name
 
+# similar to a generic Graph
+
 class SocialGraph:
     def __init__(self):
         self.lastID = 0
-        self.users = {}
-        self.friendships = {}
+        self.users = {} # essentially a list of vertices
+        self.friendships = {} # adjacency list (edges)
 
     def addFriendship(self, userID, friendID):
         """
@@ -46,9 +48,13 @@ class SocialGraph:
         self.friendships = {}
         # !!!! IMPLEMENT ME
 
-        # Add users
+        # 1. Add `numUsers` users
 
-        # Create friendships
+        for i in range(numUsers):
+            self.addUser("Peep" + str(i + 1))
+            
+        # 2. Create friendships
+
 
     def getAllSocialPaths(self, userID):
         """
